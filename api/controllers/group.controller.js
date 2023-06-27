@@ -4,6 +4,7 @@ const createGroup = async (req, res) => {
   const result = await Group.create(req.body);
   res.send(result);
 };
+
 const getGroupByID = async (req, res) => {
   const result = await Group.findOne({ _id: req.params.id });
   res.send(result);

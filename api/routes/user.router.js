@@ -7,7 +7,10 @@ const {
   updateUserByID,
   deleteUserByID,
   getUsers,
+  logUser,
 } = require("../controllers/user.controller");
+
+router.post("/loggin", logUser);
 
 //Create
 router.post("/add", createUser);
