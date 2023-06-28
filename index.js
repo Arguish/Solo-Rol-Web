@@ -12,8 +12,8 @@ function startExpress() {
     .use(morgan("dev"))
     .use(express.json())
     .use("/api", require("./api/routes/Index.router.js"))
-    .listen(process.env.PORTAPI, () => {
-      console.log(`LISTEN OK ^-^ :${process.env.PORTAPI}`);
+    .listen(process.env.PORT, () => {
+      console.log(`LISTEN OK ^-^ :${process.env.PORT}`);
     });
 }
 async function start() {
