@@ -49,9 +49,14 @@ const getUserByID = async (req, res) => {
   }
 };
 const getUsers = async (req, res) => {
-  const result = await User.find({});
-  res.send(result);
+  try {
+    const result = await User.find({});
+    res.send(result);
+  } catch (error) {
+    res.send(error);
+  }
 };
+
 const updateUserByID = async (req, res) => {
   try {
     const result = await User.updateOne({ _id: req.params.id }, req.body);

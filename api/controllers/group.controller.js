@@ -1,13 +1,21 @@
 const { Group } = require("../model/group.model");
 
 const createGroup = async (req, res) => {
-  const result = await Group.create(req.body);
-  res.send(result);
+  try {
+    const result = await Group.create(req.body);
+    res.send(result);
+  } catch (error) {
+    throw error;
+  }
 };
 
 const getGroupByID = async (req, res) => {
-  const result = await Group.findOne({ _id: req.params.id });
-  res.send(result);
+  try {
+    const result = await Group.findOne({ _id: req.params.id });
+    res.send(result);
+  } catch (error) {
+    throw error;
+  }
 };
 
 const getUserGroups = async (req, res) => {
@@ -27,12 +35,20 @@ const getUserGroups = async (req, res) => {
   }
 };
 const updateGroupByID = async (req, res) => {
-  const result = await Group.updateOne({ _id: req.params.id }, req.body);
-  res.send(result);
+  try {
+    const result = await Group.updateOne({ _id: req.params.id }, req.body);
+    res.send(result);
+  } catch (error) {
+    res.send(error);
+  }
 };
 const deleteGroupByID = async (req, res) => {
-  const result = await Group.deleteOne({ _id: req.params.id });
-  res.send(result);
+  try {
+    const result = await Group.deleteOne({ _id: req.params.id });
+    res.send(result);
+  } catch (error) {
+    res.send(error);
+  }
 };
 
 module.exports = {
