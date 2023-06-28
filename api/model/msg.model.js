@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const msgSchema = new Schema({
   owner: {
-    type: mongoose.ObjectId,
+    type: String,
     required: true,
   },
   content: {

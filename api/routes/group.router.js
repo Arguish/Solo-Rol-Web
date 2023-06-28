@@ -6,14 +6,14 @@ const {
   getGroupByID,
   updateGroupByID,
   deleteGroupByID,
-  getGroups,
+  getUserGroups,
 } = require("../controllers/group.controller");
 
 //Create
 router.post("/add", createGroup);
 
 //Read
-router.get("/all", getGroups);
+router.post("/user", getUserGroups);
 router.get("/:id", getGroupByID);
 
 //Update

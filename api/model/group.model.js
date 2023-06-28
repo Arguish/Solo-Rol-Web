@@ -1,20 +1,14 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const { userSchema } = require("./user.model");
-const { msgSchema } = require("./msg.model");
-const { ToDoSchema } = require("./todo.model");
-
 const GroupSchema = new Schema({
   participant: {
-    type: [userSchema],
-    required: true,
-  },
-  chat: {
-    type: [msgSchema],
+    type: [String],
+    unique: false,
   },
   todos: {
-    type: [ToDoSchema],
+    type: [String],
+    unique: false,
   },
 });
 

@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+const { msgSchema } = require("./msg.model");
+
 const ToDoSchema = new Schema({
   title: {
     type: String,
@@ -13,8 +15,14 @@ const ToDoSchema = new Schema({
     type: Boolean,
     default: false,
   },
+  coments: {
+    type: [String],
+  },
+  createdBy: {
+    type: String,
+  },
   doneBy: {
-    type: mongoose.ObjectId,
+    type: String,
   },
 });
 
