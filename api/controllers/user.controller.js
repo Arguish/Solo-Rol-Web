@@ -32,8 +32,8 @@ const logUser = async (req, res) => {
       res.json({
         msg: "El mail existe",
         pass1: req.body.pass,
-        passEc: userLogged.pass,
-        pass1EC: pass1EncriptedAgain,
+        pass2: await userLogged.pass,
+        pass3: pass1EncriptedAgain,
       });
       /* bcrypt.compareSync(req.body.pass, userLogged.pass, (err, same) => {
         if (!same) {
