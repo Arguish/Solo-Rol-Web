@@ -32,7 +32,7 @@ const logUser = async (req, res) => {
       if (!same) {
         res.json({ msg: "Email or password invalid", error: err });
       } else {
-        res.json({ msg: "Log ok", result: userLogged[0] });
+        res.json({ msg: "Log ok", canLog: true, result: userLogged[0] });
       }
     }
   } catch (error) {
