@@ -34,6 +34,7 @@ const logUser = async (req, res) => {
         pass1: req.body.pass,
         pass2: userLogged[0].pass,
         pass3: pass1EncriptedAgain,
+        thesame: bcrypt.compareSync(req.body.pass, userLogged[0].pass),
       });
       /* bcrypt.compareSync(req.body.pass, userLogged.pass, (err, same) => {
         if (!same) {
