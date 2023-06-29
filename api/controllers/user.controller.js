@@ -32,7 +32,7 @@ const logUser = async (req, res) => {
       res.json({
         msg: "El mail existe",
         pass1: req.body.pass,
-        pass2: await userLogged.pass,
+        pass2: userLogged[0].pass,
         pass3: pass1EncriptedAgain,
       });
       /* bcrypt.compareSync(req.body.pass, userLogged.pass, (err, same) => {
