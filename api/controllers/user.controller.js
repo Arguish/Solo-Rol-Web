@@ -27,17 +27,17 @@ const logUser = async (req, res) => {
     const userLogged = await User.find({ mail: req.body.mail });
     console.log(userLogged);
     if (userLogged.length === 0) {
-      return res.json({ msg: "mail incorrecto", response: userLogged });
+      res.json({ msg: "mail incorrecto", response: userLogged });
     }
-    bcrypt.compare(req.body.pass, userLogged.pass, (err, result) => {
-      if (!result) {
-        return res.json({ msg: "Email or password invalid", error: err });
+    bcrypt.compareSync(req.body.pass, userLogged.pass, (err, same) => {
+      if (!same) {
+        res.json({ msg: "Email or password invalid", error: err });
       } else {
-        return res.json({ msg: "Log ok?", result: result });
+        res.json({ msg: "Log ok", result: userLogged });
       }
     });
   } catch (error) {
-    return res.send(error);
+    res.send(error);
   }
 };
 
