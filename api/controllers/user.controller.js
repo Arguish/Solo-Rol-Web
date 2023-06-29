@@ -27,7 +27,7 @@ const logUser = async (req, res) => {
     const userLogged = await User.find({ mail: req.body.mail });
     console.log(userLogged);
     if (userLogged.length > 0) {
-      return res.send("mail incorrecto");
+      return res.send("mail incorrecto").send(userLogged);
     }
     bcrypt.compare(req.body.pass, userLogged.pass, (err, result) => {
       if (!result) {
