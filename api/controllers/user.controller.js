@@ -31,9 +31,9 @@ const logUser = async (req, res) => {
     }
     bcrypt.compare(req.body.pass, userLogged.pass, (err, result) => {
       if (!result) {
-        return res.send("Email or password invalid");
+        return res.json({ msg: "Email or password invalid", error: err });
       } else {
-        return res.send("Log ok?");
+        return res.json({ msg: "Log ok?", result: result });
       }
     });
   } catch (error) {
