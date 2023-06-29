@@ -3,6 +3,8 @@ const { checkConnection } = require("./api/db/dbIndex");
 const express = require("express");
 const morgan = require("morgan");
 
+const cors = require("cors");
+
 async function startDB() {
   await checkConnection();
 }
@@ -11,6 +13,7 @@ function startExpress() {
   const api = express()
     .use(morgan("dev"))
     .use(express.json())
+    .use(cors())
     .use("/api", require("./api/routes/Index.router.js"))
     .listen(process.env.PORT, () => {
       console.log(`LISTEN OK ^-^ :${process.env.PORT}`);
