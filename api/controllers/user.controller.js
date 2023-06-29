@@ -28,15 +28,12 @@ const logUser = async (req, res) => {
     if (userLogged.length === 0) {
       res.json({ msg: "mail incorrecto", response: userLogged });
     } else {
-      const pass1EncriptedAgain = await bcrypt.hashSync(req.body.pass, 10);
-
-      bcrypt.compareSync(req.body.pass, userLogged[0].pass, (err, same) => {
-        if (!same) {
-          res.json({ msg: "Email or password invalid", error: err });
-        } else {
-          res.json({ msg: "Log ok", result: userLogged[0] });
-        }
-      });
+      const same = await bcrypt.compareSync(req.body.pass, userLogged[0].pass);
+      if (!same) {
+        res.json({ msg: "Email or password invalid", error: err });
+      } else {
+        res.json({ msg: "Log ok", result: userLogged[0] });
+      }
     }
   } catch (error) {
     res.send(error);
