@@ -32,6 +32,8 @@ const logUser = async (req, res) => {
     bcrypt.compare(req.body.pass, userLogged.pass, (err, result) => {
       if (!result) {
         res.status(403).send("Email or password invalid");
+      } else {
+        res.send("User Ok");
       }
     });
   } catch (error) {
